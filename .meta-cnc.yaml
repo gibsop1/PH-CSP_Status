@@ -1,0 +1,20 @@
+name: cloud-services-plugin-status
+label: Example of how use the 'get' command for PAN-OS
+
+description: |
+  This example Skillet shows how to retrieve information from a PAN-OS device using the 'get' command type. This example
+  uses the 'get' command type to retrieve some data, then uses a couple of different capture types to parse out
+  different bits from the returned data.
+
+type: panorama
+labels:
+  collection:
+    - Example Skillets
+    
+snippets:
+  - name: system_object
+    cmd: cli
+    cmd_str: show system info
+    outputs:
+      - name: results_as_object
+        capture_object: .
