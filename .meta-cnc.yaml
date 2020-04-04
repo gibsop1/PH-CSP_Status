@@ -1,10 +1,8 @@
-name: cloud-services-plugin-status
-label: Example of how use the 'get' command for PAN-OS
+name: cloud-services-plugin-status-gibsop1
+label: gibsop1
 
 description: |
-  This example Skillet shows how to retrieve information from a PAN-OS device using the 'get' command type. This example
-  uses the 'get' command type to retrieve some data, then uses a couple of different capture types to parse out
-  different bits from the returned data.
+  How to use cli commands in skillets
 
 type: panorama
 labels:
