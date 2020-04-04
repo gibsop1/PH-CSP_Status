@@ -12,3 +12,10 @@
           <ipsec-tunnel>{{ ipsec_tun_name }}</ipsec-tunnel>                                                                                                                                           
           <secondary-wan-enabled>no</secondary-wan-enabled>                                                                                                                                           
         </entry> 
+
+
+<dns-servers>
+{% for name in rn_name %}
+    <member>{{ name }}</member>
+{% endfor %}
+</dns-servers>
