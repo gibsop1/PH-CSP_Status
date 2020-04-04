@@ -1,10 +1,10 @@
 # skillet preamble information used by panhandler
 # ---------------------------------------------------------------------
 # unique snippet name
-name: Step2_Remote_Network_Setting
+name: gibsop1-CreateRN
 # label used for menu selection
-label: Step2_Remote_Network_Setting
-description: This step is about the Remote Network setting
+label: gibsop1-CreateRN
+description: gibsop1-CreateRN
 
 # type of device configuration
 # common types are panorama, panos, and template
@@ -16,7 +16,7 @@ extends:
 # grouping of like snippets for dynamic menu creation in panhandler
 labels:
   collection:
-    - ezhi-Prisma-Access-RN
+    - gibsop1
 
 # ---------------------------------------------------------------------
 # end of preamble section
