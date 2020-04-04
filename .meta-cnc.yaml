@@ -1,18 +1,92 @@
-name: cloud-services-plugin-status-gibsop1
-label: gibsop1
+# skillet preamble information used by panhandler
+# ---------------------------------------------------------------------
+# unique snippet name
+name: Step2_Remote_Network_Setting
+# label used for menu selection
+label: Step2_Remote_Network_Setting
+description: This step is about the Remote Network setting
 
-description: |
-  How to use cli commands in skillets
+# type of device configuration
+# common types are panorama, panos, and template
+# https://github.com/PaloAltoNetworks/panhandler/blob/develop/docs/metadata_configuration.rst
+type: panorama-gpcs
+# preload static or default-based templates
+extends:
 
-type: panorama
+# grouping of like snippets for dynamic menu creation in panhandler
 labels:
   collection:
-    - Example Skillets
-    
+    - ezhi-Prisma-Access-RN
+
+# ---------------------------------------------------------------------
+# end of preamble section
+
+# variables section
+# ---------------------------------------------------------------------
+# variables used in the configuration templates
+# type_hint defines the form field used by panhandler
+# type_hints can be text, ip_address, or dropdown
+variables:
+  - name: rn_name
+    description: Remote Network Name
+    default: 
+    type_hint: text
+  - name: tenant
+    description: Tenant Name
+    default: 
+    type_hint: text
+  - name: rn_subnet
+    description: Remote Network Subnet
+    default: 
+    type_hint: cidr
+  - name: ipsec_tun_name
+    description: IPSec Tunnel Name
+    default: 
+    type_hint: text
+  - name: rn_license_type
+    description: Bandwidth
+    default: choices
+    type_hint: dropdown
+    dd_list:
+      - key: 2 Mbps
+        value: FWAAS-2Mbps
+      - key: 5 Mbps
+        value: FWAAS-5Mbps
+      - key: 10 Mbps
+        value: FWAAS-10Mbps
+      - key: 20 Mbps
+        value: FWAAS-20Mbps
+      - key: 25 Mbps
+        value: FWAAS-25Mbps
+      - key: 50 Mbps
+        value: FWAAS-50Mbps
+      - key: 100 Mbps
+        value: FWAAS-100Mbps
+      - key: 150 Mbps
+        value: FWAAS-150Mbps
+      - key: 300 Mbps
+        value: FWAAS-300Mbps
+      - key: 500 Mbps (Preview)
+        value: FWAAS-500Mbps
+      - key: 1000 Mbps (Preview)
+        value: FWAAS-1000Mbps
+  - name: rn_region
+    description: Location
+    default: choices
+    type_hint: dropdown
+    dd_list:
+      - key: UK
+        value: eu-west-2
+# ---------------------------------------------------------------------
+# end of variables section
+
+# snippets section
+# ---------------------------------------------------------------------
+# snippets used for api configuration including xpath and element as file name
+# files will load in the order listed
 snippets:
-  - name: system_object
-    cmd: cli
-    cmd_str: show system info
-    outputs:
-      - name: results_as_object
-        capture_object: .
+  - name: remote_networks
+    xpath: /config/devices/entry[@name='localhost.localdomain']/plugins/cloud_services/multi-tenant/tenants/entry[@name="{{ tenant }}"]/remote-networks/onboarding
+    file: rn.xml
+# ---------------------------------------------------------------------
+# end of snippets section
