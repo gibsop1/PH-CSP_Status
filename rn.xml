@@ -14,6 +14,8 @@
         </entry> 
 
 
-{% for i in range(11) %}
- {{ i }}
+<dns-servers>
+{% for name in rn_name %}
+    <member>{{ name }}</member>
 {% endfor %}
+</dns-servers>
